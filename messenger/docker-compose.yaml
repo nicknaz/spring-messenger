@@ -1,0 +1,31 @@
+# версия Docker Compose
+version: '3.8'
+
+# имена и описания контейнеров, которые должны быть развёрнуты
+services:
+  # описание контейнера db
+  messenger-db:
+    # образ, из которого должен быть запущен контейнер
+    image: postgres:13.7-alpine
+    container_name: messenger-db
+    # volume и связанная с ним директория в контейнере
+    volumes:
+      - /var/lib/postgresql/data/
+    # переменные окружения
+    environment:
+      - POSTGRES_DB=messenger-db
+      - POSTGRES_USER=valar
+      - POSTGRES_PASSWORD=uhonut58
+
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    # "зависит от",
+    depends_on:
+      - messenger-db
+    # переменные окружения
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://messenger-db:5432/messenger-db
+      - SPRING_DATASOURCE_USERNAME=valar
+      - SPRING_DATASOURCE_PASSWORD=uhonut58

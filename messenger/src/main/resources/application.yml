@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost/messenger-db}
+    username: ${SPRING_DATASOURCE_USERNAME:tester}
+    password: ${SPRING_DATASOURCE_PASSWORD:123456}
+    driverClassName: org.postgresql.Driver
+  sql:
+    init:
+      platform: postgres
+
+server:
+  port: 5600
+
+app:
+  jwtSecret: MegaLargeSigningSecretKeyForDemoApplicationMegaLargeSigningSecretKeyForDemoApplication
+  jwtRefreshSecret: MegaLargeRefreshSecretKeyForDemoApplicationMegaLargeSigningSecretKeyForDemoApplication
+  jwtExpirationMs: 60000
+

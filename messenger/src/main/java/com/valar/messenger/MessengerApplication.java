@@ -10,4 +10,6 @@ public class MessengerApplication {
 		SpringApplication.run(MessengerApplication.class, args);
 	}
 
+
+
 }
