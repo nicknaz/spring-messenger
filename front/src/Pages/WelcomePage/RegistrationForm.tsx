@@ -19,7 +19,7 @@ const RegistrationForm: FC = () => {
         <input placeholder="email" onChange={(e) => setEmail(e.target.value)}></input>
         <input placeholder="password" type="password" onChange={(e) => setPassword(e.target.value)}></input>
         <input placeholder="password" type="password" onChange={(e) => setSecondPassword(e.target.value)}></input>
-        <button type="button" onClick={() => store.registration(username, password)} >Registration</button>
+        <button type="button" onClick={() => store.registration(username, password, email)} >Registration</button>
     </form>
     )
     
