@@ -4,31 +4,62 @@
 }
 
 .loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0 auto;
 }
 
-form input, form button {
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-bottom: 10px;
-    padding: 15px 5%;
-    outline: none;
-    border: 0;
-    font-size: 16px;
+@media (orientation: landscape) {
+    form input, form button {
+        width: 40%;
+        margin-bottom: 10px;
+        padding: 15px 5%;
+        outline: none;
+        border: 0;
+        font-size: 16px;
+    }
+
+    form button {
+        width: 40%;
+        cursor: pointer;
+        transition: transform 500ms ease;
+    }
+
+    form button:hover {
+        transform: scale(1.1);
+    }
+
+
+    #otherFormButton {
+        width: 15%;
+        font-size: 14px;
+    }
 }
 
-form button {
-    width: 40%;
-    cursor: pointer;
-    transition: transform 500ms ease;
-}
+@media (orientation: portrait) {
+    form input, form button {
+        width: 80%;
+        margin-bottom: 10px;
+        padding: 15px 5%;
+        outline: none;
+        border: 0;
+        font-size: 16px;
+    }
 
-form button:hover {
-    transform: scale(1.1);
-}
+    form button {
+        width: 80%;
+        cursor: pointer;
+        transition: transform 500ms ease;
+    }
 
-#otherFormButton {
-    width: 15%;
-    font-size: 14px;
+    form button:hover {
+        transform: scale(1.1);
+    }
+
+
+    #otherFormButton {
+        width: 65%;
+        font-size: 14px;
+    }
 }

@@ -1,6 +1,7 @@
 import React, {FC, useContext, useState} from "react";
 import { Context } from "../..";
 import { observer } from "mobx-react-lite";
+import RegistrationResponse from "../../models/RegistrationResponse";
 
 
 const RegistrationForm: FC = () => {
@@ -9,7 +10,28 @@ const RegistrationForm: FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [secondPassword, setSecondPassword] = useState<string>('');
+
+    const [status, setStatus] = useState<string>('');
     const {store} = useContext(Context);
+
+    const registration = (e : React.MouseEvent<HTMLButtonElement>) => {
+        if (password != secondPassword ) {
+            setStatus("Пароли не совпадают!")
+        } else {
+            //reg : RegistrationResponse = await store.registration(username, password, email);
+            
+            store.registration(username, password, email).then(
+                regResponse => {
+                    if (regResponse.status == 200) {
+                        setStatus("Вы успешно зарегистрировались")
+                        window.location.assign("/");
+                    } else {
+                        setStatus(regResponse.messege);
+                    }
+                }
+            )
+        }
+    }
 
     return (
     <form className="loginForm">
@@ -18,7 +40,8 @@ const RegistrationForm: FC = () => {
         <input placeholder="email" onChange={(e) => setEmail(e.target.value)}></input>
         <input placeholder="password" type="password" onChange={(e) => setPassword(e.target.value)}></input>
         <input placeholder="password" type="password" onChange={(e) => setSecondPassword(e.target.value)}></input>
-        <button type="button" onClick={() => password == secondPassword ? store.registration(username, password, email) : alert("Пароли не совпадают!")} >Registration</button>
+        <button type="button" onClick={registration} >Registration</button>
+        <h4>{status}</h4>
     </form>
     )
     

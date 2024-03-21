@@ -1,9 +1,10 @@
 import { makeAutoObservable } from "mobx";
 import { IUser } from "../models/IUser";
 import $api, { SERVER_URL } from "../http";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import AuthService from "../services/AuthServise";
 import { AuthResponse } from "../models/AuthReaponse";
+import RegistrationResponse from "../models/RegistrationResponse";
 import UserService from "../services/UserService";
 
 export default class Store {
@@ -27,25 +28,27 @@ export default class Store {
         this.isLoading = bool;
     }
 
-    async login(username: string, password: string) {
+    async login(username: string, password: string) : Promise<Number> {
         try {
             const response = await AuthService.login(username, password);
             localStorage.setItem('token', response.data.token);
             this.setAuth(true);
             this.setUser(response.data.user);
+            return response.status;
         } catch (e: any) {
             console.log(e.response?.data?.message);
+            return e.response.status;
         }
     }
 
-    async registration(username: string, password: string, email: string) {
+    async registration(username: string, password: string, email: string) : Promise<RegistrationResponse> {
         try {
             const response = await AuthService.registration(username, password, email);
-            //localStorage.setItem('token', response.data.token);
-            //this.setAuth(true);
-            //this.setUser(response.data.user);
+            response.data.status = response.status;
+            return response.data;
         } catch (e: any) {
-            console.log(e.response?.data?.message);
+            e.response.data.status = e.response.status;
+            return e.response.data;
         }
     }
 
