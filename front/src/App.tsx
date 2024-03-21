@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import React, {FC, useContext, useEffect} from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import './css/App.css';
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 import ProfilePage from "./Pages/ProfilePage/ProfilePage";
@@ -37,7 +37,7 @@ const App: FC = () => {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={store.isAuth ? <ProfilePage /> : <WelcomePage />}/>
+        <Route path="/" element={store.isAuth ? <Navigate to="/profile" />: <WelcomePage />}/>
 
         <Route path="/profile" element={<ProfilePage />}/>
       </Routes>

@@ -1,11 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 .App {
   text-align: center;
 }
 
 .header {
-  padding: 1% 0% 1% 10%;
-  background-color: #7eaee9;
+  display: flex;
+  padding: 1% 0% 1% 2%;
+  background-color: #282c31;
+}
+
+.logo {
+  display: inline;
+  font-family: 'Roboto';
+  font-size: 130%;
   color: white;
+  width: 30%;
+}
+
+.topMenu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 68%;
+}
+
+.topMenu button {
+  float: left;
+  padding: 15px 5%;
+  outline: none;
+  border: 0;
+  font-size: 16px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

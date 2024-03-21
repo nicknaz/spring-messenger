@@ -18,7 +18,7 @@ const RegistrationForm: FC = () => {
         <input placeholder="email" onChange={(e) => setEmail(e.target.value)}></input>
         <input placeholder="password" type="password" onChange={(e) => setPassword(e.target.value)}></input>
         <input placeholder="password" type="password" onChange={(e) => setSecondPassword(e.target.value)}></input>
-        <button type="button" onClick={() => password == secondPassword ? store.registration(username, password, email) : alert("Password")} >Registration</button>
+        <button type="button" onClick={() => password == secondPassword ? store.registration(username, password, email) : alert("Пароли не совпадают!")} >Registration</button>
     </form>
     )
     
