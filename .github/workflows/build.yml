@@ -7,4 +7,4 @@ jobs:
     runs-on: self-hosted
     steps:
         -name: test_workflow
-        -run: touch test.txt
+         run: touch test.txt
