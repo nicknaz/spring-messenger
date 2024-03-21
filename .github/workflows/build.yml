@@ -11,6 +11,6 @@ jobs:
         - name: Build
           run: cd front/ && npm i react-scripts && npm run build
         - name: Copy
-          run: cp -r build/* /var/www/petbrager
+          run: ls -l && cp -r front/build/* /var/www/petbrager
         - name: nginx-restart
           run: sudo service nginx restart
