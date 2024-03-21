@@ -1,5 +1,4 @@
 import React, {FC, useContext, useState} from "react";
-import axios from "axios";
 import { Context } from "../..";
 import { observer } from "mobx-react-lite";
 
@@ -19,7 +18,7 @@ const RegistrationForm: FC = () => {
         <input placeholder="email" onChange={(e) => setEmail(e.target.value)}></input>
         <input placeholder="password" type="password" onChange={(e) => setPassword(e.target.value)}></input>
         <input placeholder="password" type="password" onChange={(e) => setSecondPassword(e.target.value)}></input>
-        <button type="button" onClick={() => store.registration(username, password, email)} >Registration</button>
+        <button type="button" onClick={() => password == secondPassword ? store.registration(username, password, email) : alert("Password")} >Registration</button>
     </form>
     )
     

@@ -1,7 +1,5 @@
 import React, {FC, useContext, useState} from "react";
-import axios from "axios";
 import { Context } from "../..";
-import { observe } from "mobx";
 import {observer} from "mobx-react-lite";
 
 const LoginForm: FC = () => {

@@ -1,10 +1,9 @@
 import Header from "./components/Header";
-import React, {FC, useContext, useEffect, useState} from "react";
+import React, {FC, useContext, useEffect} from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import './css/App.css';
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 import ProfilePage from "./Pages/ProfilePage/ProfilePage";
-import { Profiler } from "react";
 import { Context } from ".";
 import { observer } from "mobx-react-lite"
 
