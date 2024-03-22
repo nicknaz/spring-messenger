@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AuthResponse } from "../models/AuthReaponse";
 
-export const SERVER_URL = `http://localhost:5600/messenger`;
+export const SERVER_URL = `https://petbrager.ru/inapi/`;
 
 const $api = axios.create({
     withCredentials: true,
