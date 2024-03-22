@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm";
 import "../../css/WelcomePage.css";
 import RegistrationForm from "./RegistrationForm";
 import axios from "axios";
+import Header from "../../components/Header";
 
 interface IProps {
 }
@@ -25,6 +26,7 @@ class WelcomePage extends React.Component<IProps, IState> {
     render () {
         return (
             <div className="auth">
+                <Header />
                 <h2>Welcome!</h2>
                 {this.state.isLoginForm ? <LoginForm /> : <RegistrationForm/>}
                 <form className="loginForm">

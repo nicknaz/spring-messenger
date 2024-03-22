@@ -16,7 +16,6 @@ const LoginForm: FC = () => {
             loginResponse => {
                 if (loginResponse == 200) {
                     setStatus("Вы успешно авторизовались")
-                    window.location.assign("/profile");
                 } else if (loginResponse == 401) {
                     setStatus("Неправильный пароль или логин!");
                 } else {

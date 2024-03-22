@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+.leftBlock {
+    flex-basis: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 95%;
+    opacity: 0.79;
+    margin: 10px 10px 10px 10px;
+    padding: 20px;
+    overflow: hidden;
+    border: none;
+    -webkit-border-radius: 33px;
+    border-radius: 33px;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    background: rgb(206, 206, 206);
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+  }
+
+  .searchBlock{
+    width: 97%;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 0 10px;
+    background: rgb(68, 68, 68);
+    overflow: hidden;
+    border: none;
+    -webkit-border-radius: 33px;
+    border-radius: 33px;
+    display: flex;
+    align-items: center;
+  }
+
+  .searchBlock button {
+    width: 15%;
+    height: 100%;
+    margin: 10px;
+    border: none;
+    -webkit-border-radius: 33px;
+    border-radius: 33px;
+  }
+
+  /* Выпадающий контент (по умолчанию скрыт) */
+  .dropdown-content {
+    visibility:hidden;
+    opacity:0;
+    transition:visibility 0s linear 0.5s,opacity 0.5s linear;
+    position: absolute;
+    margin-top: 27px;
+    margin-left: -13px;
+    background-color: rgb(68, 68, 68);
+    min-width: 180px;
+    width: auto;
+    z-index: 1;
+    border: none;
+    -webkit-border-radius: 33px;
+    border-radius: 33px;
+  }
+
+  #etc:hover .dropdown-content {
+    visibility:visible;
+    opacity:1;
+    transition-delay: 0ms;
+  }
+
+  .dropdown-content button {
+    color: black;
+    font-family: "Roboto";
+    font-size: large;
+    align-items: center;
+    text-align: left;
+    padding: 12px 16px 12px;
+    margin: 10px 10px 10px 10px;
+    width: 90%;
+    text-decoration: none;
+    display: block;
+  }
+
+  .searchBlock input {
+    font-size: large;
+    font-family: "Roboto";
+    padding-left: 20px;
+    width: 70%;
+    height: 100%;
+    margin: 10px 0px 10px 0px;
+    border: none;
+    -webkit-border-radius: 33px;
+    border-radius: 33px;
+    outline: darkslategray;
+  }
+
+  .searchBlock input::placeholder {
+    font-size: large;
+    font-family: "Roboto";
+    color: #212529;
+    opacity: 0.4;
+  }
+
+  .dialogs {
+    height: 100%;
+    width: 97%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(68, 68, 68);
+    overflow: scroll;
+    border: none;
+    -webkit-border-radius: 33px;
+    border-radius: 33px;
+  }
+
+  .dialogs button {
+    color: black;
+    font-family: "Roboto";
+    font-size: large;
+    align-items: center;
+    text-align: left;
+    padding: 12px 16px 12px;
+    margin: 10px 10px 10px 10px;
+    width: 95%;
+    text-decoration: none;
+    display: block;
+    border: none;
+    -webkit-border-radius: 33px;
+    border-radius: 33px;
+  }

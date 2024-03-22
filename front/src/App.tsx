@@ -1,11 +1,11 @@
 import Header from "./components/Header";
-import React, {FC, useContext, useEffect} from "react";
+import {FC, useContext, useEffect} from "react";
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import './css/App.css';
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
-import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 import { Context } from ".";
 import { observer } from "mobx-react-lite"
+import MainPage from "./Pages/MainPage/MainPage";
 
 
 const App: FC = () => {
@@ -22,24 +22,10 @@ const App: FC = () => {
     return <div>Загрузка...</div>
   }
 
-  if (!store.isAuth) {
-    return (
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={store.isAuth ? <ProfilePage /> : <WelcomePage />}/>
-        </Routes>
-      </Router>
-    );
-  }
-
   return (
     <Router>
-      <Header />
       <Routes>
-        <Route path="/" element={store.isAuth ? <Navigate to="/profile" />: <WelcomePage />}/>
-
-        <Route path="/profile" element={<ProfilePage />}/>
+        <Route path="/" element={store.isAuth ? <MainPage /> : <WelcomePage />}/>
       </Routes>
     </Router>
 

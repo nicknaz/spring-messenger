@@ -1,6 +1,8 @@
 import React, {createContext} from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom/client";
 import App from './App';
+
+import "./css/index.css"
 import Store from "./store/store";
 
 interface State {
@@ -13,12 +15,13 @@ export const Context = createContext<State>({
     store,
 })
 
-ReactDOM.render(
+
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+root.render(
   <Context.Provider value={{
       store
   }}>
       <App />
-  </Context.Provider>,
-document.getElementById('root')
+  </Context.Provider>
 );
 

@@ -1,0 +1,20 @@
+
+.rightBlock {
+    flex-basis: 73%;
+    height: 95%;
+    opacity: 0.79;
+    margin: 10px 10px 10px 0px;
+    padding: 20px;
+    border: none;
+    -webkit-border-radius: 33px;
+    border-radius: 33px;
+    font: normal 16px/1 "Times New Roman", Times, serif;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    background: rgb(206, 206, 206);
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+  }
