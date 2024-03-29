@@ -44,7 +44,7 @@ export default class DialogsStore {
                 "/user/" + userStore.user.id + "/queue/chats",
                 this.onChatsReceived.bind(this)
               );
-         }, 4000);
+         }, 6000);
     };
 
     subscribeDialog() {
