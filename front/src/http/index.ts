@@ -2,7 +2,7 @@ import axios from "axios";
 import { AuthResponse } from "../models/AuthReaponse";
 import dayjs from "dayjs";
 
-export const SERVER_URL = `http://localhost:5600/messenger`;
+export const SERVER_URL = `https://petbrager.ru/inapi/`;
 
 const $api = axios.create({
     withCredentials: true,
