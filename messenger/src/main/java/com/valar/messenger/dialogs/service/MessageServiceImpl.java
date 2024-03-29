@@ -20,6 +20,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAccessor;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,6 +51,7 @@ public class MessageServiceImpl implements MessageService {
     public DialogWithMessagesResponse sendFirstMessage(MessageForNewDialogRequest messageRequest) {
         User sender = userService.getUserById(messageRequest.getSenderId());
         User recipient = userService.getUserById(messageRequest.getRecipientId());
+        messageRequest.setDateTime(LocalDateTime.now(ZoneId.of("Europe/Moscow")));
 
         if (dialogRepository.findDialogByUsers(messageRequest.getSenderId(), messageRequest.getRecipientId()) != null) {
             throw new DialogExistException("Dialog already exist!");
@@ -84,7 +87,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public void sendMessageFromSocket(MessageRequestFromSocket messageRequestFromSocket) {
         MessageRequest messageRequest = MessageMapper.toMessageRequest(messageRequestFromSocket);
-        messageRequest.setDateTime(LocalDateTime.now());
+        messageRequest.setDateTime(LocalDateTime.now(ZoneId.of("Europe/Moscow")));
 
         Dialog dialog = dialogRepository.findById(messageRequest.getDialogId())
                 .orElseThrow(() -> new NotFoundedException("Dialog not found!"));

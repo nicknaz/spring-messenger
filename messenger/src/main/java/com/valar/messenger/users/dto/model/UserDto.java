@@ -16,16 +16,17 @@ import java.util.Set;
 public class UserDto {
     private long id;
 
-    @NotBlank
-    @Size(min = 2, max = 250)
+    @NotBlank(message = "Поле username не должно быть пустым!")
+    @Size(min = 3, max = 50, message = "Длина поля username должна быть от 3 до 50 знаков")
     private String username;
 
-    @Email
-    @NotBlank
-    @Size(min = 5, max = 254)
+    @Email(message = "Неверный формат Email!")
+    @NotBlank(message = "Поле email не должно быть пустым!")
+    @Size(min = 5, max = 254, message = "Длина поля email должна быть от 5 до 254 знаков")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Поле password не должно быть пустым!")
+    @Size(min = 6, max = 250, message = "Длина поля password должна быть от 6 до 250 знаков")
     private String password;
 
     private Set<String> roles;

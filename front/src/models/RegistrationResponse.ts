@@ -1,10 +1,10 @@
 class RegistrationResponse {
     status?: number = 200;
-    messege: string = "";
+    message: string = "";
 
-    constructor(messege: string, status?: number | undefined) {
+    constructor(message: string, status?: number | undefined) {
         this.status = status;
-        this.messege = messege;
+        this.message = message;
     }
     
 }

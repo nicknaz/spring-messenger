@@ -7,6 +7,7 @@ import UserService from "../services/UserService";
 import { MessageShortResponse } from "../models/MessageShortResponse";
 import { DialogResponse } from "../models/DialogResponse";
 import { userStore } from "..";
+import config from "../config";
 import MessageService from "../services/MessageService";
 import dayjs from "dayjs";
 
@@ -36,16 +37,20 @@ export default class DialogsStore {
         var SockJS = require("sockjs-client");
 
         console.log("Подключение");
-        SockJS = new SockJS("https://petbrager.ru/inapi/ws");
+        SockJS = new SockJS(config.url + "/ws");
         this.stompClient = Stomp.over(SockJS);
-        this.stompClient.connect({}, this.onError);
+        this.stompClient.connect({}, this.onConnected(this.stompClient), this.onError);
+        
+    };
+
+    onConnected(stompClient : any) {
         setTimeout(() => {
-            this.stompClient.subscribe(
+            stompClient.subscribe(
                 "/user/" + userStore.user.id + "/queue/chats",
                 this.onChatsReceived.bind(this)
               );
-         }, 6000);
-    };
+         }, 3000);
+    }
 
     subscribeDialog() {
         console.log("Подписка");

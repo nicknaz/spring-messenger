@@ -29,7 +29,7 @@ const LoginForm: FC = () => {
     return (
     <form className="loginForm">
         <h4>Log In</h4>
-        <input placeholder="login" onChange={(e) => setUsername(e.target.value)}></input>
+        <input placeholder="username" onChange={(e) => setUsername(e.target.value)}></input>
         <input placeholder="password" type="password" onChange={(e) => setPassword(e.target.value)}></input>
         <button type="button" onClick={login} >Log In</button>
         <h4>{status}</h4>

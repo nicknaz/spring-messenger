@@ -45,13 +45,22 @@ export default class UserStore {
     }
 
     async registration(username: string, password: string, email: string) : Promise<RegistrationResponse> {
+        //var regResponse : RegistrationResponse;
         try {
             const response = await AuthService.registration(username, password, email);
-            response.data.status = response.status;
-            return response.data;
+            var regResponse : RegistrationResponse = 
+            {
+                status : response.status,
+                message : JSON.stringify(response.data)
+            };
+            return regResponse;
         } catch (e: any) {
-            e.response.data.status = e.response.status;
-            return e.response.data;
+            var regResponse : RegistrationResponse = 
+            {
+                status : e.response.status,
+                message : JSON.stringify(e.response.data)
+            };
+            return regResponse;
         }
     }
 

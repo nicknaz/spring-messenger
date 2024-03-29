@@ -26,7 +26,20 @@ const RegistrationForm: FC = () => {
                         setStatus("Вы успешно зарегистрировались")
                         window.location.assign("/");
                     } else {
-                        setStatus(regResponse.messege);
+                        var response : any = JSON.parse(regResponse.message);
+                        if (response['username']) {
+                            setStatus(response['username'])
+                        } else if (response['email']) {
+                            setStatus(response['email'])
+                        } else if (response['password']) {
+                            setStatus(response['password'])
+                        } else if (response['messege'] == 'Error: Username is exist') {
+                            setStatus("Пользователь с таким username уже существует!")
+                        } else if (response['messege'] == 'Error: Email is exist') {
+                            setStatus("Пользователь с таким username уже существует!")
+                        } else {
+                            setStatus("Ошибка регистрации!")
+                        }
                     }
                 }
             )

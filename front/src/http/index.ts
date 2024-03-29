@@ -1,8 +1,9 @@
 import axios from "axios";
 import { AuthResponse } from "../models/AuthReaponse";
 import dayjs from "dayjs";
+import config from "../config";
 
-export const SERVER_URL = `https://petbrager.ru/inapi/`;
+export const SERVER_URL = config.url;
 
 const $api = axios.create({
     withCredentials: true,

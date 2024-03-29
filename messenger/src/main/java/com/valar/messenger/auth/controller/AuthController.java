@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.security.auth.message.AuthException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -135,7 +136,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody UserDto userDto) {
 
         if (userRespository.existsByUsername(userDto.getUsername())) {
             return ResponseEntity
