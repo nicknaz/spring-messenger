@@ -1,6 +1,9 @@
 package com.valar.messenger.users.service;
 
+import com.valar.messenger.exception.NotFoundedException;
 import com.valar.messenger.users.dto.mapper.UserMapper;
+import com.valar.messenger.users.entity.User;
+import com.valar.messenger.exception.NotFoundedException;
 import com.valar.messenger.users.repository.UserRepositoryJPA;
 import com.valar.messenger.users.dto.model.UserDto;
 import com.valar.messenger.users.dto.model.UserShortDto;
@@ -23,8 +26,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserShortDto> getAllUsers() {
-        return userRepository.findAll().stream().map(UserMapper::toUserShortDto).collect(Collectors.toList());
+    public List<UserShortDto> getUsersByUsername(String partOfName) {
+        return userRepository.findByUserSearch(partOfName+"%").stream().map(UserMapper::toUserShortDto).collect(Collectors.toList());
     }
 
     @Override
@@ -34,5 +37,11 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException();
         }
         return UserMapper.toUserDto(userRepository.save(UserMapper.toUser(user)));
+    }
+
+    @Override
+    public User getUserById(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundedException("User not found!"));
+        return user;
     }
 }

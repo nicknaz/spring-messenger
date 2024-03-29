@@ -3,23 +3,23 @@ import ReactDOM from "react-dom/client";
 import App from './App';
 
 import "./css/index.css"
-import Store from "./store/store";
+import UserStore from "./store/UserStore";
 
 interface State {
-    store: Store,
+    userStore: UserStore,
 }
 
-export const store = new Store();
+export const userStore = new UserStore();
 
 export const Context = createContext<State>({
-    store,
+    userStore,
 })
 
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <Context.Provider value={{
-      store
+    userStore
   }}>
       <App />
   </Context.Provider>

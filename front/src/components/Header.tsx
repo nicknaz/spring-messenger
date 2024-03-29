@@ -4,11 +4,11 @@ import {observer} from "mobx-react-lite";
 import { checkIfStateModificationsAreAllowed } from "mobx/dist/internal";
 
 const Header: FC = () => {
-    const {store} = useContext(Context);
+    const {userStore} = useContext(Context);
 
 
     const logout = (e: React.MouseEvent<HTMLButtonElement>) => {
-        store.logout()
+        userStore.logout()
         window.location.assign("/");
     };
 
@@ -19,7 +19,7 @@ const Header: FC = () => {
             </div>
             
             <div className="topMenu">
-                {store.isAuth ? <button id="logout" onClick={logout}>Logout</button> : <div></div>}
+                {userStore.isAuth ? <button id="logout" onClick={logout}>Logout</button> : <div></div>}
             </div>
         </div>
     )

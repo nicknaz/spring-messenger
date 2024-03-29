@@ -8,11 +8,11 @@ const LoginForm: FC = () => {
     const [password, setPassword] = useState<string>('');
 
     const [status, setStatus] = useState<string>('');
-    const {store} = useContext(Context);
+    const {userStore} = useContext(Context);
 
     const login = (e : React.MouseEvent<HTMLButtonElement>) => {
         
-        store.login(username, password).then(
+        userStore.login(username, password).then(
             loginResponse => {
                 if (loginResponse == 200) {
                     setStatus("Вы успешно авторизовались")

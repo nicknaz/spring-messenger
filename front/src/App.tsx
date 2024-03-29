@@ -9,23 +9,23 @@ import MainPage from "./Pages/MainPage/MainPage";
 
 
 const App: FC = () => {
-  const {store} = useContext(Context);
+  const {userStore} = useContext(Context);
   console.log(localStorage.getItem("token"));
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
-        store.checkAuth()
+      userStore.checkAuth()
     }
   }, [])
 
-  if (store.isLoading) {
+  if (userStore.isLoading) {
     return <div>Загрузка...</div>
   }
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={store.isAuth ? <MainPage /> : <WelcomePage />}/>
+        <Route path="/" element={userStore.isAuth ? <MainPage /> : <WelcomePage />}/>
       </Routes>
     </Router>
 

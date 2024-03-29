@@ -12,7 +12,7 @@ const RegistrationForm: FC = () => {
     const [secondPassword, setSecondPassword] = useState<string>('');
 
     const [status, setStatus] = useState<string>('');
-    const {store} = useContext(Context);
+    const {userStore} = useContext(Context);
 
     const registration = (e : React.MouseEvent<HTMLButtonElement>) => {
         if (password != secondPassword ) {
@@ -20,7 +20,7 @@ const RegistrationForm: FC = () => {
         } else {
             //reg : RegistrationResponse = await store.registration(username, password, email);
             
-            store.registration(username, password, email).then(
+            userStore.registration(username, password, email).then(
                 regResponse => {
                     if (regResponse.status == 200) {
                         setStatus("Вы успешно зарегистрировались")

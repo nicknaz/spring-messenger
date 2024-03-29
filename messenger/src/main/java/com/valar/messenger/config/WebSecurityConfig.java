@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/messenger/auth/**").permitAll()
-                .antMatchers("/messenger/test/**").permitAll()
+                .antMatchers("/messenger/ws/**").permitAll()
                 .anyRequest().authenticated();
 
         httpSecurity.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -81,6 +81,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.addAllowedOrigin("http://localhost:3000");
+        corsConfiguration.addAllowedOrigin("http://localhost:8080");
+        corsConfiguration.addAllowedOrigin("https://localhost:8080");
         corsConfiguration.addAllowedOrigin("http://petbrager.ru");
         corsConfiguration.addAllowedOrigin("https://petbrager.ru");
         corsConfiguration.addAllowedHeader("*");

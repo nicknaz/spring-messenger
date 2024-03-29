@@ -10,6 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,10 +27,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public List<UserShortDto> getAllUsers() {
-        log.info("get users");
-        return userService.getAllUsers();
+    @GetMapping("/search")
+    public List<UserShortDto> getUsersByUsername(@RequestParam @NotNull String searchRequest) {
+        log.info("Search users by username with request: " + searchRequest);
+        if (searchRequest.length() < 2) {
+           return new ArrayList<UserShortDto>();
+        }
+        return userService.getUsersByUsername(searchRequest);
     }
 
     @GetMapping("/profile")
@@ -41,16 +46,6 @@ public class UserController {
                 .build();
     }
 
-    @GetMapping("/add/{test}")
-    public UserDto addNewUser(@PathVariable("test") String test) {
-        log.info("addNewUser");
-        return userService.addUser(UserDto.builder().username(test).email(test + "@test.ts").build());
-    }
-
-    @PostMapping
-    public String test(){
-        return "Her";
-    }
 
 
 }

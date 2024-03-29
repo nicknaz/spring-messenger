@@ -1,4 +1,7 @@
 spring:
+  mvc:
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
   jpa:
     database: POSTGRESQL
     show-sql: true
@@ -19,5 +22,5 @@ server:
 app:
   jwtSecret: MegaLargeSigningSecretKeyForDemoApplicationMegaLargeSigningSecretKeyForDemoApplication
   jwtRefreshSecret: MegaLargeRefreshSecretKeyForDemoApplicationMegaLargeSigningSecretKeyForDemoApplication
-  jwtExpirationMs: 60000
+  jwtExpirationMs: 300000
 

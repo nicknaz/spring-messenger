@@ -6,8 +6,10 @@ import AuthService from "../services/AuthServise";
 import { AuthResponse } from "../models/AuthReaponse";
 import RegistrationResponse from "../models/RegistrationResponse";
 import UserService from "../services/UserService";
+import DialogsStore from "./DialogsStore";
 
-export default class Store {
+export default class UserStore {
+    dialogsStore : any;
     user = {} as IUser;
     isAuth = false;
     isLoading = false;
@@ -22,6 +24,7 @@ export default class Store {
 
     setUser(user: IUser) {
         this.user = user;
+        this.dialogsStore = new DialogsStore();
     }
 
     setLoading(bool: boolean) {
@@ -76,12 +79,5 @@ export default class Store {
         }
     }
 
-    async getProfile() {
-        try {
-            const response = await UserService.getProfile();
-            this.setUser(response.data);
-        } catch (e: any) {
-            console.log(e.response?.data?.message);
-        }
-    }
+    
 }

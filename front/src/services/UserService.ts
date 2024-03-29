@@ -8,7 +8,9 @@ export default class UserService {
         return $api.get<IUser[]>('/user');
     }
 
-    static getProfile(): Promise<AxiosResponse<IUser>> {
-        return $api.get<IUser>('/user/profile');
+    static searchUsers(searchRequest : String): Promise<AxiosResponse<IUser[]>> {
+        return $api.get<IUser[]>('/user/search', {params : {
+            searchRequest
+        }});
     }
 }

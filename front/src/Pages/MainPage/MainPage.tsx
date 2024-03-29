@@ -3,11 +3,11 @@ import { Context } from "../..";
 import './css/MainPage.css';
 import {observer} from "mobx-react-lite";
 import { checkIfStateModificationsAreAllowed } from "mobx/dist/internal";
-import BlockWithPeoples from "./components/BlockWithPeoples";
+import BlockWithPeoples from "./components/leftBlock/BlockWithPeoples";
 import BlockMessanger from "./components/BlockMessanger";
 
 const MainPage: FC = () => {
-    const {store} = useContext(Context);
+    const {userStore} = useContext(Context);
 
 
     return (
