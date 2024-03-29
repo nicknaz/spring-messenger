@@ -36,7 +36,7 @@ export default class DialogsStore {
         var SockJS = require("sockjs-client");
 
         console.log("Подключение");
-        SockJS = new SockJS("http://localhost:5600/messenger/ws");
+        SockJS = new SockJS("https://petbrager.ru/inapi/ws");
         this.stompClient = Stomp.over(SockJS);
         this.stompClient.connect({}, this.onError);
         setTimeout(() => {
