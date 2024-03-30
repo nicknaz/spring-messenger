@@ -5,7 +5,7 @@ import '../../css/BlockMessanger.css';
 import {observer} from "mobx-react-lite";
 
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FaSearch, FaUser} from "react-icons/fa";
+import { FaArrowAltCircleLeft, FaArrowLeft, FaBackspace, FaSearch, FaUser} from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
 
 const InfoDialogBlock: FC = () => {
@@ -15,6 +15,13 @@ const InfoDialogBlock: FC = () => {
 
     return (
         <div className="info">
+            {
+                window.matchMedia('(orientation: portrait)').matches 
+                ?
+                <button onClick={() => dialogsStore.setIsVisibleDialog(false)}><FaArrowLeft/> </button>
+                :
+                <></>
+            }
             <FaUser />  {dialogsStore.currentRecepient.username}
         </div>
     )

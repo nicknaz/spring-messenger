@@ -12,8 +12,21 @@ const MainPage: FC = () => {
 
     return (
         <div className="mainPage">
-            <BlockWithPeoples />
-            <BlockMessanger />
+            {
+                window.matchMedia('(orientation: portrait)').matches 
+                ?
+                    !userStore.dialogsStore.isVisibleDialog 
+                    ?
+                    <BlockWithPeoples /> 
+                    :
+                    <BlockMessanger />
+                :
+                <>
+                    <BlockWithPeoples />
+                    <BlockMessanger />
+                </>
+            }
+            
         </div>
     )
 }

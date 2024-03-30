@@ -21,6 +21,7 @@ export default class DialogsStore {
     isSearches = false as boolean;
     isDialog = false as boolean;
     isNewDialog = false as boolean;
+    isVisibleDialog = false as boolean;
 
     stompClient : any = {};
 
@@ -135,6 +136,10 @@ export default class DialogsStore {
         this.isSearches = value;
     }
 
+    setIsVisibleDialog(value : boolean) {
+        this.isVisibleDialog = value;
+    }
+
     setIsDialog(value : boolean) {
         this.isDialog = value;
     }
@@ -144,11 +149,11 @@ export default class DialogsStore {
     }
 
     chooseUser(user : IUser) {
-
         if (this.userDialogs.some((ud) => {return ud.firstUser.id == user.id || ud.secondUser.id == user.id})) {
             this.chooseDialog(this.userDialogs.filter((ud) => {return ud.firstUser.id == user.id || ud.secondUser.id == user.id}).at(0)!);
         } else {
             this.currentRecepient = user;
+            this.setIsVisibleDialog(true);
             this.setIsDialog(true);
             this.setIsNewDialog(true);
         }
@@ -159,6 +164,7 @@ export default class DialogsStore {
         this.getDialog(shortDialog.id);
         this.setIsDialog(true);
         this.setIsNewDialog(false);
+        this.setIsVisibleDialog(true);
     }
 
     async getUserDialogs() {

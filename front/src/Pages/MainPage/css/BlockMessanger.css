@@ -1,6 +1,5 @@
 
 .rightBlock {
-    flex-basis: 73%;
     height: 95%;
     opacity: 0.79;
     margin: 10px 10px 10px 0px;
@@ -36,6 +35,15 @@
   border-radius: 33px;
   display: flex;
   align-items: center;
+}
+
+.info button {
+  width: 10%;
+  height: 80%;
+  margin: 10px;
+  border: none;
+  -webkit-border-radius: 33px;
+  border-radius: 33px;
 }
 
 .inputMessages {
@@ -197,3 +205,28 @@
   -webkit-border-radius: 33px;
   border-radius: 33px;
 }
+
+@media screen and (max-width: 1400px) {
+  .rightBlock {
+    flex-basis: 50%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .rightBlock {
+    flex-basis: 73%;
+  }
+}
+
+@media (orientation: portrait) {
+  .rightBlock {
+    flex-basis: 95%;
+    margin: 2.5%;
+  }
+
+  .inputMessages button {
+    width: 15%;
+    margin: 5px;
+  }
+}
+
